@@ -1,0 +1,46 @@
+name: build-check
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/**"
+      - "src/**"
+      - "build.zig"
+      - "build.zig.zon"
+
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+    paths:
+      - ".github/**"
+      - "src/**"
+      - "build.zig"
+      - "build.zig.zon"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build-check:
+    name: build check
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    if: github.event.pull_request.draft == false
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: ./.github/actions/install
+        with:
+          debug: true
+
+      - name: zig build check
+        run: zig build check
+
+      - name: zig build release
+        run: zig build -Doptimize=ReleaseSafe -Dcpu=x86_64
