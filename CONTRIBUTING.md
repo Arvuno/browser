@@ -30,3 +30,6 @@ otherwise we're not able to accept your contributions.
 The process signature uses the [CLA assistant
 lite](https://github.com/marketplace/actions/cla-assistant-lite). You can see
 an example of the process in [#303](https://github.com/lightpanda-io/browser/pull/303).
+
+## Contributors
+- Documentation improvements (2026)
