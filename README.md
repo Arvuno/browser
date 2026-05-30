@@ -390,3 +390,6 @@ Supporting Javascript with real performance meant building from scratch rather t
 - Not based on Chromium, Blink, or WebKit
 - Written in Zig, a low-level language with explicit memory control
 - No graphical rendering engine
+
+## Contributing
+PRs welcome!
